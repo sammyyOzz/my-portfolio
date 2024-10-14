@@ -1,9 +1,19 @@
+"use client";
+
 import { spicy_rice } from "@/app/fonts";
 import { Button, Text } from "@/components/ui";
 import { Box, Flex, Switch } from "@chakra-ui/react";
 import { links } from "./links";
+import { useAppContext } from "@/context";
+import { toggleThemeMode } from "@/actions/theme.actions";
 
 function Navbar() {
+  const { themeMode } = useAppContext();
+
+  const _toggleThemeMode = () => {
+    toggleThemeMode()
+  }
+
   return (
     <Flex
       justify="space-between"
@@ -29,7 +39,7 @@ function Navbar() {
             {name}
           </Button>
         ))}
-        <Switch colorScheme="cyan" />
+        <Switch colorScheme="cyan" isChecked={themeMode === "light"} onChange={_toggleThemeMode} />
       </Box>
     </Flex>
   );
