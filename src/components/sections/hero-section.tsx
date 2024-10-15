@@ -10,6 +10,7 @@ function HeroSection() {
 
   return (
     <Flex
+      id="home"
       direction="column"
       align="center"
       justify="space-evenly"
