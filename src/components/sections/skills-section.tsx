@@ -1,5 +1,5 @@
 import useGetThemeMode from "@/hooks/use-get-theme-mode";
-import { Box, Heading, VStack, Wrap, WrapItem } from "@chakra-ui/react";
+import { Box, SimpleGrid, VStack, Wrap, WrapItem } from "@chakra-ui/react";
 import { Text } from "../ui";
 import JavascriptIcon from "@/icons/javascript";
 import HtmlIcon from "@/icons/html";
@@ -12,6 +12,8 @@ import DatabaseIcon from "@/icons/database";
 import TailwindIcon from "@/icons/tailwind";
 import FirebaseIcon from "@/icons/firebase";
 import DockerIcon from "@/icons/docker";
+import DisplayLottie from "../display-lottie";
+import buildLottie from "@/assets/lottie/build.json";
 
 const skills = [
   { Icon: HtmlIcon, name: "HTML 5" },
@@ -31,43 +33,54 @@ function SkillsSection() {
   const { themeMode } = useGetThemeMode();
 
   return (
-    <Box id="skills" py={40} px={8} bg={themeMode === "light" ? "#e0e0e6" : "primary-dark"}>
+    <Box
+      id="skills"
+      py={35}
+      px={8}
+      bg={themeMode === "light" ? "#e0e0e6" : "primary-dark"}
+    >
       <Text
         textAlign="center"
         fontWeight="bold"
         fontSize="xl"
-        mb={16}
+        mb={8}
         color={themeMode === "light" ? "#000000" : "#ffffff"}
       >
         Skills
       </Text>
 
-      <Wrap justify="center" spacing="30px">
-        {skills.map((skill, i) => (
-          <WrapItem key={i}>
-            <VStack
-              _hover={{
-                "*": {
-                  color: "#ae16eb",
-                },
-              }}
-            >
-              {
-                <skill.Icon
-                  fontSize="7xl"
-                  color={themeMode === "light" ? "#000000" : "#d3d0d0"}
-                />
-              }
-              <Text
-                fontSize="2xs"
-                color={themeMode === "light" ? "#000000" : "#ffffff"}
+      <SimpleGrid columns={[1, null, null, 2]} alignItems="center" gap={10}>
+        <Box>
+          <DisplayLottie animationData={buildLottie} />
+        </Box>
+
+        <Wrap justify="center" spacing="30px">
+          {skills.map((skill, i) => (
+            <WrapItem key={i}>
+              <VStack
+                _hover={{
+                  "*": {
+                    color: "#163deb",
+                  },
+                }}
               >
-                {skill.name}
-              </Text>
-            </VStack>
-          </WrapItem>
-        ))}
-      </Wrap>
+                {
+                  <skill.Icon
+                    fontSize="7xl"
+                    color={themeMode === "light" ? "#5c5959" : "#d3d0d0"}
+                  />
+                }
+                <Text
+                  fontSize="2xs"
+                  color={themeMode === "light" ? "#000000" : "#ffffff"}
+                >
+                  {skill.name}
+                </Text>
+              </VStack>
+            </WrapItem>
+          ))}
+        </Wrap>
+      </SimpleGrid>
     </Box>
   );
 }

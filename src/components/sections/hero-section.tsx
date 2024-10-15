@@ -4,6 +4,8 @@ import { Text } from "../ui";
 import AnimatedTyping from "../animated-typing";
 import ThemeSwitch from "../theme-switch";
 import Navbar from "../navbar";
+import DisplayLottie from "../display-lottie";
+import robotLottie from "@/assets/lottie/robot-hello.json"
 
 function HeroSection() {
   const { themeMode } = useGetThemeMode();
@@ -20,6 +22,9 @@ function HeroSection() {
     >
       <Navbar />
       <Flex direction="column" align="center" justify="center" gap="30px">
+        <Box>
+          <DisplayLottie animationData={robotLottie} height={200} />
+        </Box>
         <Text
           color={themeMode === "light" ? "#000000" : "#ffffff"}
           fontSize="4xl"
