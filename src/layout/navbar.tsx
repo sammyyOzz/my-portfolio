@@ -3,7 +3,7 @@
 import { spicy_rice } from "@/app/fonts";
 import { Button, Text } from "@/components/ui";
 import { Box, Flex, Switch } from "@chakra-ui/react";
-import { links } from "./links";
+import { links } from "../links";
 import { useAppContext } from "@/context";
 import { toggleThemeMode } from "@/actions/theme.actions";
 

@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "../layout/navbar";
 import Providers from "./providers";
 import { merienda } from "./fonts";
-
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +17,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={merienda.className}>
         <Providers>
-          <Navbar />
           {children}
         </Providers>
       </body>
