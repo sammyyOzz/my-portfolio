@@ -3,3 +3,24 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
+.section {
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero {
+  height: auto;
+  min-height: 800px;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+
+@media (max-width: 1920px) {
+  .hero {
+    height: 100dvh;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+  }
+}

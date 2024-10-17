@@ -5,7 +5,7 @@ import AnimatedTyping from "../animated-typing";
 import ThemeSwitch from "../theme-switch";
 import Navbar from "../navbar";
 import DisplayLottie from "../display-lottie";
-import robotLottie from "@/assets/lottie/robot-hello.json"
+import robotLottie from "@/assets/lottie/robot-hello.json";
 
 function HeroSection() {
   const { themeMode } = useGetThemeMode();
@@ -15,10 +15,9 @@ function HeroSection() {
       id="home"
       direction="column"
       align="center"
-      justify="space-evenly"
-      gap="30px"
-      h="100dvh"
-      bg={themeMode === "light" ? "#e0e0e6" : "primary-dark"}
+      justify="space-between"
+      // border="1px solid red"
+      className="section hero"
     >
       <Navbar />
       <Flex direction="column" align="center" justify="center" gap="30px">
@@ -27,14 +26,15 @@ function HeroSection() {
         </Box>
         <Text
           color={themeMode === "light" ? "#000000" : "#ffffff"}
-          fontSize="4xl"
+          fontSize={["xl", null, null, "2xl", "3xl", "4xl"]}
           fontWeight="black"
         >
           {"< Samuel Oziegbe />"}
         </Text>
         <AnimatedTyping themeMode={themeMode} />
-        <ThemeSwitch />
       </Flex>
+
+      <ThemeSwitch />
     </Flex>
   );
 }

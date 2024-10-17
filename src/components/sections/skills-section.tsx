@@ -37,7 +37,7 @@ function SkillsSection() {
       id="skills"
       py={35}
       px={8}
-      bg={themeMode === "light" ? "#e0e0e6" : "primary-dark"}
+      className="section"
     >
       <Text
         textAlign="center"

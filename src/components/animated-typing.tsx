@@ -11,9 +11,8 @@ interface AnimatedTypingProps {
 function AnimatedTyping({ themeMode }: AnimatedTypingProps) {
   return (
     <Box
-      style={{
-        color: themeMode === "light" ? "#000000" : "#ffffff",
-      }}
+      fontSize={["lg", null, null, "2xl", null, "3xl"]}
+      color={themeMode === "light" ? "#000000" : "#ffffff"}
     >
       <TypeAnimation
         sequence={[
@@ -26,7 +25,7 @@ function AnimatedTyping({ themeMode }: AnimatedTypingProps) {
         cursor={true}
         repeat={Infinity}
         style={{
-          fontSize: "24px",
+          // fontSize: "24px",
           display: "inline-block",
         }}
       />
