@@ -15,7 +15,7 @@ export const theme = extendTheme({
       // ...
       900: "#1a202c",
     },
-    "primary-dark": "#080346",
+    "primary-dark": "#181630",
   },
 })
 

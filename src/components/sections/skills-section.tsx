@@ -42,9 +42,10 @@ function SkillsSection() {
       <Text
         textAlign="center"
         fontWeight="bold"
-        fontSize="xl"
-        mb={8}
+        fontSize={["4xl", null, null, null, "6xl"]}
+        mb={6}
         color={themeMode === "light" ? "#000000" : "#ffffff"}
+        textTransform="uppercase"
       >
         Skills
       </Text>

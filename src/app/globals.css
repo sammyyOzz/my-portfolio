@@ -4,6 +4,10 @@
   scroll-behavior: smooth;
 }
 
+img {
+  object-fit: cover;
+}
+
 .section {
   max-width: 1920px;
   margin-left: auto;
