@@ -5,11 +5,14 @@ import Image from "next/image";
 import onedocLanding from "@/assets/images/onedoc-landing.png";
 import { Text } from "../ui";
 import Backdrop from "../ui/backdrop";
-import { useAppContext } from "@/context";
+import ProjectModal from "./project-modal";
+import { TThemeMode } from "@/types/theme.types";
 
-function ProjectCard() {
-  const { themeMode } = useAppContext();
+interface ProjectCardProps {
+  themeMode: TThemeMode;
+}
 
+function ProjectCard({ themeMode }: ProjectCardProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -47,7 +50,7 @@ function ProjectCard() {
       </Box>
 
       <Backdrop isOpen={isOpen}>
-
+        <ProjectModal handleClose={onClose} />
       </Backdrop>
     </>
   );
