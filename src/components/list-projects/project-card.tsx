@@ -2,17 +2,18 @@
 
 import { Box, useDisclosure } from "@chakra-ui/react";
 import Image from "next/image";
-import onedocLanding from "@/assets/images/onedoc-landing.png";
 import { Text } from "../ui";
 import Backdrop from "../ui/backdrop";
 import ProjectModal from "./project-modal";
 import { TThemeMode } from "@/types/theme.types";
+import { projectsData } from "./projects-data";
 
 interface ProjectCardProps {
   themeMode: TThemeMode;
+  project: typeof projectsData[0]
 }
 
-function ProjectCard({ themeMode }: ProjectCardProps) {
+function ProjectCard({ themeMode, project }: ProjectCardProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -28,8 +29,8 @@ function ProjectCard({ themeMode }: ProjectCardProps) {
         cursor="pointer"
         onClick={onOpen}
       >
-        <Box pos="relative" aspectRatio={16 / 9} mb={5}>
-          <Image src={onedocLanding} alt="" fill />
+        <Box pos="relative" aspectRatio={16 / 8} mb={5}>
+          <Image src={project.images[0]} alt="" fill />
         </Box>
         <Text
           textAlign="center"
@@ -37,20 +38,21 @@ function ProjectCard({ themeMode }: ProjectCardProps) {
           fontWeight="bold"
           mb={3}
           color={themeMode === "light" ? "#000000" : "#ffffff"}
+          noOfLines={1}
         >
-          One doc
+          {project.name}
         </Text>
         <Text
           textAlign="center"
-          noOfLines={2}
-          color={themeMode === "light" ? "#000000" : "#ffffff"}
+          noOfLines={1}
+          color={themeMode === "light" ? "#000000" : "#e9e4e4"}
         >
-          One doc
+          {project.description}
         </Text>
       </Box>
 
       <Backdrop isOpen={isOpen}>
-        <ProjectModal handleClose={onClose} />
+        <ProjectModal handleClose={onClose} project={project} />
       </Backdrop>
     </>
   );
