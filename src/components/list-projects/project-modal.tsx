@@ -7,7 +7,7 @@ import VideoPlayer from "../video-player";
 import { projectsData } from "./projects-data";
 import Image from "next/image";
 import useCarousel from "@/hooks/use-carousel";
-import { AnimatePresence } from "framer-motion"; // Import framer motion
+import { AnimatePresence } from "framer-motion";
 
 export interface ProjectModalProps {
   handleClose: () => void;
@@ -42,11 +42,9 @@ function ProjectModal({ handleClose, project }: ProjectModalProps) {
   return (
     <MotionBox
       ref={ref}
-      display="flex"
       pos="absolute"
       top="50%"
       left="50%"
-      gap={7}
       transform="translate(-50%, -50%)"
       w={["90vw", null, "80vw", null, "70vw"]}
       h={["80vh"]}
@@ -59,122 +57,132 @@ function ProjectModal({ handleClose, project }: ProjectModalProps) {
       animate={{ opacity: 1, transition: { duration: 0.5 } }}
       exit={{ opacity: 0, transition: { duration: 0.5 } }}
     >
-      <Flex
-        w="50%"
-        direction="column"
+      <Flex 
+        direction={["column", null, null, "row"]}
         gap={7}
-        border={`1px solid gray`}
-        p={4}
-        borderRadius="10px"
+        overflowX="hidden"
+        overflowY={["auto", null, null, "hidden"]}
+        h="100%"
+        pr={[2, null, null, 0]}
       >
-        {mediaType === "video" ? (
-          <Flex justify="center" align="center" aspectRatio={16 / 9}>
-            <VideoPlayer url={project.videos[0]} />
-          </Flex>
-        ) : (
-          <Box aspectRatio={16 / 9} overflow="hidden" position="relative">
-            <AnimatePresence mode="wait">
-              <MotionBox
-                key={currentImageIndex}
-                initial={{ opacity: 0 }}
-                animate={{ x: 0, opacity: 1, transition: { duration: 0.5 } }}
-                exit={{ opacity: 0 }}
-                style={{ position: "absolute", width: "100%", height: "100%" }}
-              >
-                <Image
-                  src={project.images[currentImageIndex]}
-                  alt=""
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </MotionBox>
-            </AnimatePresence>
-          </Box>
-        )}
-
-        <Box flex={1} overflowY="auto" pr={2}>
-          {!!project.videos.length && (
-            <>
-              <Text
-                mb={2}
-                color={themeMode === "light" ? "#000000" : "#ffffff"}
-              >
-                Videos
-              </Text>
-              <SimpleGrid columns={[2, null, null, 3, 4]} gap={2} mb={3}>
-                {project.videos.map((projectVideoUrl, i) => (
-                  <Box
-                    key={i}
-                    border={`2px solid ${
-                      mediaType === "video" ? "blue" : "transparent"
-                    }`}
-                  >
-                    <VideoPlayer
-                      url={projectVideoUrl}
-                      controls={false}
-                      cursor="pointer"
-                      onClick={() => setMediaType("video")}
-                    />
-                  </Box>
-                ))}
-              </SimpleGrid>
-            </>
+        <Flex
+          w={["100%", null, null, "50%"]}
+          direction="column"
+          gap={7}
+          border={`1px solid gray`}
+          p={4}
+          borderRadius="10px"
+          mb={[4, null, null, 0]}
+        >
+          {mediaType === "video" ? (
+            <Flex justify="center" align="center" aspectRatio={16 / 9}>
+              <VideoPlayer url={project.videos[0]} />
+            </Flex>
+          ) : (
+            <Box aspectRatio={16 / 9} overflow="hidden" position="relative">
+              <AnimatePresence mode="wait">
+                <MotionBox
+                  key={currentImageIndex}
+                  initial={{ opacity: 0 }}
+                  animate={{ x: 0, opacity: 1, transition: { duration: 0.5 } }}
+                  exit={{ opacity: 0 }}
+                  style={{ position: "absolute", width: "100%", height: "100%" }}
+                >
+                  <Image
+                    src={project.images[currentImageIndex]}
+                    alt=""
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </MotionBox>
+              </AnimatePresence>
+            </Box>
           )}
 
-          <Text mb={2} color={themeMode === "light" ? "#000000" : "#ffffff"}>
-            Images
-          </Text>
-          <SimpleGrid columns={[2, null, null, 3, 4]} gap={1} mb={3}>
-            {project.images.map((imageUrl, i) => (
-              <Box
-                key={i}
-                pos="relative"
-                aspectRatio={16 / 8}
-                border={`2px solid ${
-                  currentImageIndex === i && mediaType === "image"
-                    ? "blue"
-                    : "transparent"
-                }`}
-                onClick={() => {
-                  setMediaType("image");
-                  handleCarouselItemClick(i);
-                }}
-              >
-                <Image src={imageUrl} alt="" fill />
-              </Box>
-            ))}
-          </SimpleGrid>
+          <Box flex={1} overflowY="auto" pr={2}>
+            {!!project.videos.length && (
+              <>
+                <Text
+                  mb={2}
+                  color={themeMode === "light" ? "#000000" : "#ffffff"}
+                >
+                  Videos
+                </Text>
+                <SimpleGrid columns={[2, null, null, 3, 4]} gap={2} mb={3}>
+                  {project.videos.map((projectVideoUrl, i) => (
+                    <Box
+                      key={i}
+                      border={`2px solid ${
+                        mediaType === "video" ? "blue" : "transparent"
+                      }`}
+                    >
+                      <VideoPlayer
+                        url={projectVideoUrl}
+                        controls={false}
+                        cursor="pointer"
+                        onClick={() => setMediaType("video")}
+                      />
+                    </Box>
+                  ))}
+                </SimpleGrid>
+              </>
+            )}
+
+            <Text mb={2} color={themeMode === "light" ? "#000000" : "#ffffff"}>
+              Images
+            </Text>
+            <SimpleGrid columns={[2, null, null, 3, 4]} gap={1} mb={3}>
+              {project.images.map((imageUrl, i) => (
+                <Box
+                  key={i}
+                  pos="relative"
+                  aspectRatio={16 / 8}
+                  border={`2px solid ${
+                    currentImageIndex === i && mediaType === "image"
+                      ? "blue"
+                      : "transparent"
+                  }`}
+                  onClick={() => {
+                    setMediaType("image");
+                    handleCarouselItemClick(i);
+                  }}
+                >
+                  <Image src={imageUrl} alt="" fill />
+                </Box>
+              ))}
+            </SimpleGrid>
+          </Box>
+        </Flex>
+
+        <Box w={["100%", null, null, "50%"]} borderRadius="10px">
+          <Box h="calc(100% - 60px)" pb={[16, null, null, 0]}>
+            <Text
+              mb={2}
+              fontSize="3xl"
+              fontWeight="black"
+              color={themeMode === "light" ? "#000000" : "#ffffff"}
+            >
+              {project.name}
+            </Text>
+            <Text mb={2} color={themeMode === "light" ? "#000000" : "#ffffff"}>
+              {project.description}
+            </Text>
+          </Box>
+
+          <Button
+            w="100%"
+            h="60px"
+            bg={themeMode === "light" ? "#ceced1" : "#edf2f7"}
+            _hover={{
+              bg: themeMode === "light" ? "#d5d5f5" : "#bdc0e0",
+              color: themeMode === "light" ? "inherit" : "#000000",
+            }}
+            onClick={() => openUrlInNewTab(project.url)}
+          >
+            View Live Project
+          </Button>
         </Box>
       </Flex>
-
-      <Box w="50%" borderRadius="10px">
-        <Box h="calc(100% - 60px)">
-          <Text
-            mb={2}
-            fontSize="3xl"
-            fontWeight="black"
-            color={themeMode === "light" ? "#000000" : "#ffffff"}
-          >
-            {project.name}
-          </Text>
-          <Text mb={2} color={themeMode === "light" ? "#000000" : "#ffffff"}>
-            {project.description}
-          </Text>
-        </Box>
-
-        <Button
-          w="100%"
-          h="60px"
-          bg={themeMode === "light" ? "#ceced1" : "#edf2f7"}
-          _hover={{
-            bg: themeMode === "light" ? "#d5d5f5" : "#bdc0e0",
-            color: themeMode === "light" ? "inherit" : "#000000",
-          }}
-          onClick={() => openUrlInNewTab(project.url)}
-        >
-          View Live Project
-        </Button>
-      </Box>
     </MotionBox>
   );
 }
