@@ -21,6 +21,11 @@ img {
   padding-bottom: 5vh;
 }
 
+/* timeline toolbar */
+/* .ToolbarWrapper-sc-cif21b-6 {
+  display: none !important;
+} */
+
 @media (max-width: 1920px) {
   .hero {
     height: 100dvh;
