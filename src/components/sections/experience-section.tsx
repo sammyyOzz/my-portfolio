@@ -9,7 +9,7 @@ function ExperienceSection() {
 
   return (
     <Box
-      id="experience"
+      id="work-experience"
       py={35}
       px={8}
       className="section"
@@ -22,7 +22,7 @@ function ExperienceSection() {
         color={themeMode === "light" ? "#000000" : "#ffffff"}
         textTransform="uppercase"
       >
-        Experience
+        Work Experience
       </Text>
       <ExperienceTimeline themeMode={themeMode} />
     </Box>
