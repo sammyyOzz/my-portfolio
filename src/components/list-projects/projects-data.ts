@@ -1,14 +1,20 @@
-import onedocScreenRecording from "@/assets/videos/onedoc-screen-recording.mp4"
 import onedocLanding from "@/assets/images/onedoc-landing.png";
 import onedocProjects from "@/assets/images/onedoc-projects.png";
 import onedocTemplates from "@/assets/images/onedoc-templates.png";
 import onedocMedia from "@/assets/images/onedoc-media.png";
 import myrkleLanding from "@/assets/images/myrkle-landing.png";
+import myrkleSelectProvider from "@/assets/images/myrkle-select-provider.png";
+import myrkleWallet from "@/assets/images/myrkle-wallet.png";
+import myrkleTxn from "@/assets/images/myrkle-txn.png";
+import myrkleTerminal from "@/assets/images/myrkle-terminal.png";
+import myrkleExchange from "@/assets/images/myrkle-exchange.png";
+import myrkleSettings from "@/assets/images/myrkle-settings.png";
 import evokeLanding from "@/assets/images/evoke-landing.png";
 import evokeSecondOpinionLanding from "@/assets/images/evoke-second-opition-landing.png";
 import mintengineLanding from "@/assets/images/mintengine-landing.png";
 import xammApp from "@/assets/images/xamm-app.png";
 import churchLanding from "@/assets/images/church-landing.png";
+import churchCmsHome from "@/assets/images/church-cms-home.png";
 
 export const projectsData = [
   {
@@ -17,7 +23,7 @@ export const projectsData = [
     We provide the ability to make video recordings during your beautiful presentations.
     various themes have been made available which which help you design easily without having to bother yourself with color combinations.
     `,
-    videos: [onedocScreenRecording],
+    videos: ["/onedoc-screen-recording.mp4"],
     images: [onedocLanding, onedocTemplates, onedocMedia, onedocProjects],
     url: "https://onedoc.ai/"
   },
@@ -25,14 +31,14 @@ export const projectsData = [
     name: "Myrkle",
     description: `Myrkle simplifies the XRP Ledger experience, making it more accessible and user-friendly. It operates as a centralized hub where users can discover XRP Ledger wallets, exchanges, and various services. Users can also explore innovative projects under development on the XRP Ledger and connect with fellow XRP Ledger enthusiasts to exchange insights and ideas. `,
     videos: [],
-    images: [myrkleLanding],
+    images: [myrkleLanding, myrkleSelectProvider, myrkleWallet, myrkleTxn, myrkleTerminal, myrkleExchange, myrkleSettings],
     url: "https://www.myrkle.app/"
   },
   {
     name: "African Community Orlando Catholic Church",
     description: ``,
     videos: [],
-    images: [churchLanding],
+    images: [churchLanding, churchCmsHome],
     url: "https://church-city-of-grace.netlify.app/"
   },
   {

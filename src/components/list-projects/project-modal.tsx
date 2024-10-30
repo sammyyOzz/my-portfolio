@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { Suspense, useRef, useState } from "react";
 import { MotionBox } from "@/components/ui/motion-elements";
 import { Box, Flex, SimpleGrid, Text, useOutsideClick } from "@chakra-ui/react";
 import Button from "@/components/ui/button";
@@ -76,7 +76,9 @@ function ProjectModal({ handleClose, project }: ProjectModalProps) {
         >
           {mediaType === "video" ? (
             <Flex justify="center" align="center" aspectRatio={16 / 9}>
-              <VideoPlayer url={project.videos[0]} />
+              <Suspense fallback="loading...">
+                <VideoPlayer url={project.videos[0]} />
+              </Suspense>
             </Flex>
           ) : (
             <Box aspectRatio={16 / 9} overflow="hidden" position="relative">
