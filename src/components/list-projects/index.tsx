@@ -9,7 +9,7 @@ function ListProjects() {
   return (
     <SimpleGrid columns={[1, null, 2, null, 3]} spacing={12}>
       {projectsData.map((project, i) => (
-        <ProjectCard key={i} themeMode={themeMode} project={project} />
+        <ProjectCard key={i} themeMode={themeMode} project={project} shouldStandOut={i === 0} />
       ))}
     </SimpleGrid>
   )
